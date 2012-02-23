@@ -1,0 +1,112 @@
+<div class="jumbotron">
+    <div class="container">
+        <img class="hidden-xs" src="/logos/128x128.png" align="left" alt="Imbo logo">
+        <h1><span class="i">I</span><span class="m">m</span><span class="weak">age</span> <span class="b">b</span><span class="o">o</span><span class="weak">x</span></h1>
+        <p>Imbo is an extensible open source (<a href="http://opensource.org/licenses/MIT">MIT</a> licensed) solution for storing your hi-res images along with meta data, while enabling you do generate image variations on demand using a RESTful HTTP API. <small><span class="weak">&lt;/buzzwords&gt;</span></small></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <h2>Written in PHP</h2>
+        <p>Imbo is written in <a href="http://php.net">PHP</a>, and enables you as a PHP developer to extend it using custom event listeners, or custom backends for storing images and/or metadata.</p>
+        <p>Installing and using Imbo with no customization does not require existing knowledge of PHP.</p>
+    </div>
+
+    <div class="col-sm-4">
+        <h2>Well documented</h2>
+        <p>Imbo has extensive end-user and API documentation, and loads of examples that enables you to flex you copy-paste muscles.</p>
+        <p><a class="btn btn-success" href="<?= $this->url('docs') ?>">Imbo Documentation &raquo;</a></p>
+    </div>
+
+    <div class="col-sm-4">
+        <h2>API clients</h2>
+        <p>Currently Imbo has API clients for <a href="https://github.com/imbo/imboclient-php">PHP</a> and <a href="https://github.com/imbo/imboclient-js">JavaScript</a>. A Java client is under way, along with clients for Python and Ruby.</p>
+        <p><a class="btn btn-success" href="https://github.com/imbo">Grab a client &raquo;</a></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Quick introduction</h2>
+        <p>For the following examples the Imbo logo will be used.</p>
+
+        <h3>Add an image to Imbo</h3>
+        <pre>$ curl -XPUT http://demo.imbo-project.org/users/imbo/images/748ac5c3f937f8d09877887743418908 --data-binary @/path/to/128x128.png</pre>
+        <p>where <code>748ac5c3f937f8d09877887743418908</code> is the md5 checksum of the file we are adding.</p>
+
+        <h3>Attach meta data to the image</h3>
+        <pre>$ curl -XPUT http://demo.imbo-project.org/users/imbo/images/748ac5c3f937f8d09877887743418908/metadata -d '{"some key": "some value"}'</pre>
+        <p>where the meta data is a schema less <a href="http://www.json.org/">JSON</a> object.</p>
+
+        <h3>Fetch image meta data</h3>
+        <pre>$ curl http://demo.imbo-project.org/users/imbo/images/748ac5c3f937f8d09877887743418908/metadata.json</pre>
+        <p>which responds with:</p>
+        <pre class="prettyprint"><code class="language-json"><?= json_encode($metadata ?: new stdClass()) ?></code></pre>
+
+        <h3>Transform the image</h3>
+        <div class="row">
+            <div class="col-sm-10"><pre>$ curl http://demo.imbo-project.org/users/imbo/images/748ac5c3f937f8d09877887743418908?t[]=thumbnail</pre></div>
+            <div class="col-sm-2"><img src="<?= $this->imboUrl('748ac5c3f937f8d09877887743418908')->thumbnail() ?>"></div>
+        </div>
+
+        <hr>
+
+        <h4>Examples of other transformations</h4>
+        <p>All supported transformations can be combined, and are applied to the image in the order they appear in the URL. Some transformations have different options that lets you customize them to fit your needs. Read more about all supported transformations and their options in <a href="<?= $this->url('docs') ?>">the documentation</a>.</p>
+        <div class="row">
+            <div class="col-sm-3">
+                <h5>desaturate</h5>
+                <img src="<?= $this->imboUrl('748ac5c3f937f8d09877887743418908')->desaturate() ?>">
+            </div>
+            <div class="col-sm-3">
+                <h5>thumbnail + desaturate</h5>
+                <img src="<?= $this->imboUrl('748ac5c3f937f8d09877887743418908')->thumbnail()->desaturate() ?>">
+            </div>
+            <div class="col-sm-3">
+                <h5>fliphorizontally</h5>
+                <img src="<?= $this->imboUrl('748ac5c3f937f8d09877887743418908')->flipHorizontally() ?>">
+            </div>
+            <div class="col-sm-3">
+                <h5>flipvertically</h5>
+                <img src="<?= $this->imboUrl('748ac5c3f937f8d09877887743418908')->flipVertically() ?>">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <h5>rotate</h5>
+                <img src="<?= $this->imboUrl('748ac5c3f937f8d09877887743418908')->rotate(45, '#fff') ?>">
+            </div>
+            <div class="col-sm-3">
+                <h5>border</h5>
+                <img src="<?= $this->imboUrl('748ac5c3f937f8d09877887743418908')->border('#000', 4, 4) ?>">
+            </div>
+            <div class="col-sm-3">
+                <h5>crop + resize + border + rotate</h5>
+                <img src="<?= $this->imboUrl('748ac5c3f937f8d09877887743418908')->crop(0, 33, 128, 96)->resize(220, 96)->border('#19420C', 4, 4)->rotate(10, '#225D10') ?>">
+            </div>
+            <div class="col-sm-3">
+                <h5>resize</h5>
+                <img src="<?= $this->imboUrl('748ac5c3f937f8d09877887743418908')->resize(160, 30) ?>">
+            </div>
+        </div>
+
+        <h3>Delete meta data</h3>
+        <pre>$ curl -XDELETE http://demo.imbo-project.org/users/imbo/images/748ac5c3f937f8d09877887743418908/metadata</pre>
+
+        <h3>Delete the image</h3>
+        <pre>$ curl -XDELETE http://demo.imbo-project.org/users/imbo/images/748ac5c3f937f8d09877887743418908</pre>
+
+        <h3>Fetch user information</h3>
+        <pre>$ curl http://demo.imbo-project.org/users/imbo.json</pre>
+        <p>which, at the moment responds with:</p>
+        <pre class="prettyprint"><code class="language-json"><?= json_encode($this->userInfo) ?></code></pre>
+
+        <h3>Check status of the Imbo installation</h3>
+        <pre>$ curl http://demo.imbo-project.org/status.json</pre>
+        <p>which, at the moment responds with:</p>
+        <pre class="prettyprint"><code class="language-json"><?= json_encode($this->serverStatus) ?></code></pre>
+
+        <p>These are some of the features Imbo offers. Have a look in the <a href="<?= $this->url('docs') ?>">documentation</a> to see more.</p>
+    </div>
+</div>

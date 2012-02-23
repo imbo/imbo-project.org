@@ -1,0 +1,24 @@
+{
+  "name": "imbo/imbo-project.org",
+  "description": "Imbo project website",
+  "license": "MIT",
+  "homepage": "http://imbo-project.org",
+  "authors": [
+    {
+      "name": "Christer Edvartsen",
+      "email": "cogo@starzinger.net",
+      "role": "Project lead",
+      "homepage": "http://cogo.wordpress.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "zendframework/zendframework": "~2.2",
+    "imbo/imbo-zf2": "~2.0",
+    "guzzle/guzzle": "~3.8"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~3.7",
+    "phpunit/phpunit-selenium": "~1.2"
+  }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./bootstrap.php">
+  <testsuites>
+    <testsuite name="imbo-project">
+      <directory>./ImboProjectTest</directory>
+    </testsuite>
+  </testsuites>
+  <filter>
+    <whitelist addUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">../module/ImboProject/src</directory>
+    </whitelist>
+  </filter>
+</phpunit>

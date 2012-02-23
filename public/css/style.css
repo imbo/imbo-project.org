@@ -1,0 +1,58 @@
+a.navbar-brand {
+    background: url("/logos/32x32.png") no-repeat scroll 0 10px transparent;
+    padding-left: 40px;
+    margin-left: 5px;
+}
+
+div.jumbotron img {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+div.jumbotron h1 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+div.jumbotron p {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+div.row h2 {
+    border-bottom: 1px solid #bbb;
+}
+
+span.weak { color: #bbb; }
+span.i { color: #225D10; }
+span.m { color: #588E00; }
+span.b { color: #95C400; }
+span.o { color: #225D10; }
+span.ii { color: #588E00; }
+span.mm { color: #95C400; }
+span.bb { color: #19420C; }
+span.oo { color: #588E00; }
+
+.navbar .nav > li > a.issue {
+    color: #bd3434;
+}
+
+.navbar .nav > li > a.issue:hover {
+    color: red;
+}
+
+footer p {
+    text-align: center;
+    color: #aaa;
+}
+
+#forkme {
+    z-index: 10000;
+    display: block;
+    width: 149px;
+    height: 149px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    border: 0;
+}

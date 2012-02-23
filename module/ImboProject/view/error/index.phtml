@@ -1,0 +1,6 @@
+<h1><?= $this->imboify('An error occurred') ?></h1>
+<p>It seems I managed to screw things up, big time! Please try again later.</p>
+
+<?php if (isset($this->display_exceptions) && $this->display_exceptions && isset($this->exception) && $this->exception instanceof Exception) { ?>
+<?= $this->partial('error/exceptions.phtml', array('exception' => $this->exception)) ?>
+<?php } ?>

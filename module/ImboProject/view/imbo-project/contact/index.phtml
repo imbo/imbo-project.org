@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-sm-8">
+        <h2>Get in touch</h2>
+        <p>If you want to get in touch your best bet would be to join the #imbo IRC channel on the <a href="http://freenode.net">freenode</a> (chat.freenode.net) network.</p>
+        <p>If you have discovered an issue with Imbo or any of the surrounding software (clients and more), feel free to leave an issue in the corresponding issue trackers over at <a href="https://github.com/imbo">GitHub</a>.</p>
+    </div>
+    <div class="col-sm-4">
+        <h2>Contributors</h2>
+        <p>Below is a list of the contributors to the Imbo project.</p>
+        <ul class="list-unstyled">
+            <?php foreach ($this->contributors as $contributor) { ?>
+            <li>
+                <p>
+                    <img width="20" height="20" src="<?= $contributor->getAvatarUrl() ?>">
+                    <a href="<?= $contributor->getUrl() ?>"><?= $contributor->getName() ?></a>, <a href="https://github.com/imbo/imbo/commits?author=<?= $contributor->getLogin() ?>"><strong><?= $contributor->getContributions() ?></strong> contribution<?= $contributor->getContributions() !== 1 ? 's' : '' ?></a>
+                </p>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+</div>

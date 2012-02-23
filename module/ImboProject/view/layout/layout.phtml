@@ -1,0 +1,79 @@
+<?= $this->doctype() ?>
+<html lang="en">
+    <head>
+        <?= $this->headTitle('Imbo Project')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Imbo homepage">
+        <meta name="author" content="Christer Edvartsen">
+
+        <?php if (isset($this->controller)) { ?>
+        <meta property="og:title" content="<?= strip_tags($this->headTitle()) ?>">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="<?= $this->serverUrl() . $this->url() ?>">
+        <meta property="og:site_name" content="Imbo Project">
+        <meta property="fb:admins" content="624270202">
+        <?php } ?>
+
+        <?= $this->headLink()->appendStylesheet('/css/bootstrap.min.css')
+                             ->appendStylesheet('/css/prettify.css')
+                             ->appendStylesheet('/css/style.css') ?>
+
+        <style type="text/css">
+            body {
+                padding-top: 40px;
+            }
+        </style>
+
+        <link href="/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+        <link rel="shortcut icon" href="<?= $this->basePath('/favicon.ico') ?>">
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <a class="hidden-xs" id="forkme" href="https://github.com/imbo/imbo"><img src="/images/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?= $this->url('home') ?>">Imbo</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="<?= $this->url('docs') ?>">Documentation</a></li>
+                        <li><a href="<?= $this->url('clients') ?>">API Clients</a></li>
+                        <li><a href="<?= $this->url('contact') ?>">Contact</a></li>
+                        <li><a class="issue" href="https://github.com/imbo/imbo/issues">Report an issue</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <?= $this->content ?>
+            <hr>
+            <footer>
+                <p><small>This site is built using <a href="http://framework.zend.com/">Zend Framework 2</a> and <a href="http://getbootstrap.com/">Twitter Bootstrap</a>. Source code is available at <a href="https://github.com/imbo/imbo-project.org">GitHub</a>.</small></p>
+                <p><small>&copy; 2011 - <?= date('Y') ?> by Christer Edvartsen</small></p>
+            </footer>
+        </div>
+
+        <?= $this->headScript()->prependFile($this->basePath() . '/js/bootstrap.min.js')
+                               ->prependFile($this->basePath() . '/js/jquery-1.8.3.min.js')
+                               ->prependFile($this->basePath() . '/js/prettify.js') ?>
+
+        <script>
+            $(function() {
+                prettyPrint();
+            });
+        </script>
+    </body>
+</html>

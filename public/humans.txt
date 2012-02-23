@@ -1,0 +1,16 @@
+/* TEAM */
+
+Developer: Christer Edvartsen
+Site: https://github.com/christeredvartsen
+Twitter: @cogocogo
+Location: Fredrikstad, Norway.
+
+/* THANKS */
+
+Name: Jeebus
+Location: Heavens
+
+/* SITE */
+
+Standards: HTML5, CSS3
+Software: PHP, Zend Framework 2, Git, Vim, Apache, Varnish, Imbo
