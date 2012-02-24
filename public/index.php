@@ -1,2 +1,2 @@
 <?php
-header('Location: https://github.com/christeredvartsen/imbo');
+header('Location: https://github.com/imbo');
